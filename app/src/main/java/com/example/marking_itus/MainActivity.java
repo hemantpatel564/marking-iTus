@@ -3,6 +3,7 @@ package com.example.marking_itus;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     TextView time;
     Button button;
-    Button seekbar;
+    SeekBar seekbar;
 
 
 
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.textView);
         button =  (Button) findViewById(R.id.button);
         time = (TextView) findViewById(R.id.time);
-
+        seekbar = (SeekBar) findViewById(R.id.seekBar);
 
 
         // 1. Initialize your connection to the Particle API
@@ -164,8 +165,6 @@ public class MainActivity extends AppCompatActivity {
                                 else if (choice.contentEquals("20")) {
                                     turnlightson();
                                 }
-
-
 
                             }
 
