@@ -1,7 +1,9 @@
 package com.example.marking_itus;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textview;
     Button startbuttton;
 
+    Handler publicHanlder;
     SeekBar seekbar;
 
 
@@ -62,9 +65,15 @@ public class MainActivity extends AppCompatActivity {
         seekbar.incrementProgressBy(1);
         seekbar.setMax(20);
 
-        TextView seekBarValue = (TextView)findViewById(R.id.time);
+        TextView seekBarValue = findViewById(R.id.time);
 
 
+        startbuttton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                turnlightson();
+            }
+        });
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -138,12 +147,13 @@ public class MainActivity extends AppCompatActivity {
                 // put your logic here to talk to the particle
                 // --------------------------------------------
                 List<String> functionParameters = new ArrayList<String>();
-                functionParameters.add("time");
+                functionParameters.add("0");
                 try {
-                    mDevice.callFunction("showFaces", functionParameters);
+                    mDevice.callFunction("faces", functionParameters);
 
                 } catch (ParticleDevice.FunctionDoesNotExistException e1) {
                     e1.printStackTrace();
+                    Log.d(TAG, "callApi: "+e1.getLocalizedMessage());
                 }
 
 
