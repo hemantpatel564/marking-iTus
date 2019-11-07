@@ -38,14 +38,13 @@ public class MainActivity extends AppCompatActivity {
     // MARK: Particle device
     private ParticleDevice mDevice;
 
-    int timer= 0 ;
+    int timer= 0;
+    int starttime;
 
-    TextView textView;
-    TextView time;
-    Button button;
+    TextView textview;
+    Button startbuttton;
+
     SeekBar seekbar;
-
-
 
 
 
@@ -55,10 +54,39 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        textView = (TextView) findViewById(R.id.textView);
-        button =  (Button) findViewById(R.id.button);
-        time = (TextView) findViewById(R.id.time);
-        seekbar = (SeekBar) findViewById(R.id.seekBar);
+        textview = (TextView) findViewById(R.id.textView);
+        startbuttton =  (Button) findViewById(R.id.button);
+        seekbar = (SeekBar)findViewById(R.id.seekBar);
+
+        seekbar.setProgress(0);
+        seekbar.incrementProgressBy(1);
+        seekbar.setMax(20);
+
+        TextView seekBarValue = (TextView)findViewById(R.id.time);
+
+
+        seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progress = progress / 4;
+                progress = progress * 4;
+                seekBarValue.setText(String.valueOf(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+
+
 
 
         // 1. Initialize your connection to the Particle API
@@ -68,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         getDeviceFromCloud();
 
     }
+
 
     /**
      * Custom function to connect to the Particle Cloud and get the device
