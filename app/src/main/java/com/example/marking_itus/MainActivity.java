@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     TextView time;
     Button button;
-
+    Button seekbar;
 
 
 
@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        textView = findViewById(R.id.textView);
-        button = findViewById(R.id.button);
-        time = findViewById(R.id.time);
+        textView = (TextView) findViewById(R.id.textView);
+        button =  (Button) findViewById(R.id.button);
+        time = (TextView) findViewById(R.id.time);
 
 
 
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 // put your logic here to talk to the particle
                 // --------------------------------------------
                 List<String> functionParameters = new ArrayList<String>();
-                functionParameters.add("0");
+                functionParameters.add("time");
                 try {
                     mDevice.callFunction("showFaces", functionParameters);
 
@@ -147,22 +147,22 @@ public class MainActivity extends AppCompatActivity {
                                 Log.i(TAG, "Received event with payload: " + event.dataPayload);
                                 String choice = event.dataPayload;
                                 if (choice.contentEquals("0")) {
-                                    //turnParticleGreen();
+                                    turnlightson();
                                 }
                                 else if (choice.contentEquals("4")) {
-                                   // turnParticleRed();
+                                    turnlightson();
                                 }
                                 else if (choice.contentEquals("8")) {
-                                    // turnParticleRed();
+                                    turnlightson();
                                 }
                                 else if (choice.contentEquals("12")) {
-                                    // turnParticleRed();
+                                    turnlightson();
                                 }
                                 else if (choice.contentEquals("16")) {
-                                    // turnParticleRed();
+                                    turnlightson();
                                 }
                                 else if (choice.contentEquals("20")) {
-                                    // turnParticleRed();
+                                    turnlightson();
                                 }
 
 
